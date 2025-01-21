@@ -1,7 +1,6 @@
 package com.pratica.DSList.controler;
 
 import com.pratica.DSList.dto.GameMinDTO;
-import com.pratica.DSList.entities.Game;
 import com.pratica.DSList.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
