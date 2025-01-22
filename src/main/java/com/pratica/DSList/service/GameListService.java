@@ -22,9 +22,5 @@ public class GameListService {
        return dto;
     }
 
-    @Transactional(readOnly = true)
-    public GameListDTO fidByGameId(Long id){
-        GameList result = gameListRespository.findById(id).get();
-        return new GameListDTO(result);
-    }
+
 }

@@ -3,6 +3,7 @@ package com.pratica.DSList.service;
 import com.pratica.DSList.dto.GameDTO;
 import com.pratica.DSList.dto.GameMinDTO;
 import com.pratica.DSList.entities.Game;
+import com.pratica.DSList.projection.GameMinProjection;
 import com.pratica.DSList.repository.GameRespository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,5 +28,12 @@ public class GameService {
     public GameDTO fidByGameId(Long id){
         Game result = gameRespository.findById(id).get();
         return new GameDTO(result);
+    }
+
+    @Transactional(readOnly = true)
+    public List<GameMinDTO> fidByListId(Long listId){
+        List<GameMinProjection> result = gameRespository.searchByList(listId);
+        List<GameMinDTO> dto = result.stream().map(x -> new GameMinDTO(x)).toList();
+        return dto;
     }
 }
